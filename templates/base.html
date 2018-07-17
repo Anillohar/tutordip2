@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TutorDip</title>
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <!-- Animate CSS -->
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+        <!-- Font-Awasome CSS -->
+        <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+        <!-- Owl CSS -->
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+        <!-- magnific-popup CSS -->
+        <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="{% static 'css/normal.css' %}">
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <!-- Media CSS -->
+        <link rel="stylesheet" href="{% static 'css/media-responsive.css' %}">
+</head>
+<body>
+        <header class="header">
+            <div class="top_header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <nav class="navbar navbar-expand-lg navbar-light">
+                                <div class="logo">
+                                    <a class="navbar-brand" href="{% url 'home' %}">
+                                        <img src="{% static 'images/logo.png' %}" alt="Tutuordip Logo">
+                                    </a>
+                                </div>
+
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'about-us' %}">About</a></li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">How It Work</a> </li>
+                                         <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'pricing' %}">Pricing</a> </li>
+                                        {% if user.is_authenticated %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'logoutuser' %}">Logout</a></li>
+                                         {% else %}
+                                            <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'become-a-tutor' %}">Become a Tutor</a> </li>
+                                         	<li class="nav-item">
+                                            <a class="nav-link" href="{% url 'signup' %}">Register</a> </li>
+                                            <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                                        {% endif %}
+
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+<!--different content for pages-->
+                {% block content %}
+                <!--content here-->
+                {% endblock %}
+        <footer class="footer wow fadeInUp">
+            <div class="top_footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="social_link">
+                                <h5>Get In Touch</h5>
+                                <ul>
+                                    <li><a href="javascript:;"><i class="fa fa-facebook-f" aria-hidden="true"></i></a></li>
+                                    <li><a href="javascript:;"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="javascript:;"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="javascript:;"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="javascript:;"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <h5>Quick Links</h5>
+                            <nav>
+                                <ul>
+                                    <li><a href="{% url 'home' %}">Home</a></li>
+                                    <li><a href="{% url 'about-us' %}">About</a></li>
+                                    <li><a href="{% url 'Blogs' %}">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="{% url 'faq' %}">Faq</a></li>
+                                    <li><a href="{% url 'terms' %}">Terms &amp; Conditions</a></li>
+                                    <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="footer_newsletter">
+                                <h5>Newsletter</h5>
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" name="email" placeholder="Enter Your Email" class="form-control">
+                                    </div>
+                                    <a href="javascript:;" class="btnDefault white_btn pull-right">Submit <i class="fa fa-long-arrow-right icon_left" aria-hidden="true"></i></a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p>© Copyright 2018 tutordip. All right reserved.   Developed & Maintained by AMIGO-AI</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </footer>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/wow.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/custom-script.js' %}"></script>
+        <script src="{% static 'js/isotope-docs.min.js' %}"></script>
+
+</body>
+</html>

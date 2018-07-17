@@ -1,0 +1,82 @@
+ {% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <section class="parallex_bg intro_inner wow fadeInDown blog_banner">
+    <div class="dark_overlay"></div>
+    <div class="container">
+        <div class="white_text intro_wrap text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1>Blog</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+    <main class="main_container blog_page">
+        <section class="section_padding blog_section wow fadeInUp">
+            <div class="container">
+                <div class="row">
+                    <div class="js-iso three_column">
+                        {% for i in Blogs %}
+                        <div class="js-iso-item blog-item">
+                            <article class="blog_panel">
+                                <div class="blog_pic">
+                                    <a href="javascript:;">
+                                        <figure><img src="{% static 'images/blog2.jpg' %}" alt=""></figure>
+                                    </a>                             
+                                </div>
+                                <div class="blog_content">
+                                    <h6><a href= "{% url 'blogid' i.id %}">{{ i.Title }}</a></h6>
+                                    <ul>
+                                        <li><i class="fa fa-user-o" aria-hidden="true"></i>{{ i.Author }}</li>
+                                    </ul>
+                                    <p>{{ i.Heading }}</p>
+                                </div>
+                            </article>
+                        </div>
+                        {% endfor %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        {% if Blogs.has_other_pages %}
+<nav class="navPaging">
+    <ul class="pagination  justify-content-center">
+     {% if Blogs.has_previous %}
+       <li class="page-item"><a class="page-link" href="?page={{ Blogs.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                                </a>
+       </li>
+     {% else %}
+          <li class="page-item "><a class="page-link"><span>&laquo;</span></a></li>
+     {% endif %}
+     {% for i in Blogs.paginator.page_range %}
+        {% if Blogs.number == i %}
+            <li class="active page-item"><a class="page-link"><span>{{ i }}<span class="sr-only">(current)</span></span></a></li>
+        {% else %}
+             <li class="page-item">
+                 <a  class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+    {% endfor %}
+     {% if Blogs.has_next %}
+       <li class="page-item">
+                 <a class="page-link" href="?page={{ Blogs.next_page_number }}" aria-label="Next">
+                     <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                 </a></li>
+
+     {% else %}
+          <li class="page-item "><a class="page-link"><span>&raquo;</span></a></li>
+     {% endif %}
+  </ul>
+</nav>
+{% endif %}
+
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        
+    </main>
+    {% endblock %}

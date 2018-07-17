@@ -1,0 +1,90 @@
+  {% extends "base.html" %}
+{% load i18n widget_tweaks %}
+{% block content %}
+          <div class="row">
+            <form role="form" method="post" novalidate enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form.non_field_errors }}
+                  {% for hidden_field in form.hidden_fields %}
+                     {{ hidden_field.errors }}
+                     {{ hidden_field }}
+                  {% endfor %}
+
+
+                    <div class="form-group">
+                            <label  for="Name">
+                                Name
+                            </label>
+                            <input class="form-control" id="Name" maxlength="30" name="Name" type="text">
+
+                                        {% for error in form.Name.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                            <label for="University">
+                                University
+                            </label>
+                            <input  class="form-control" id="University" maxlength="30" name="University" type="text">
+
+                                        {% for error in form.University.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+
+                    </div>
+
+                    <div class="form-group">
+                            <label for="Subjects">
+                                Subjects
+                            </label>
+                            <input class="form-control" id="Subjects" maxlength="30" name="Subjects" type="text">
+
+                                        {% for error in form.Subjects.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+
+
+                    </div>
+
+                    <div class="form-group">
+                            <label for="Stream">
+                                Stream
+                            </label>
+                            <input class="form-control" id="Stream" maxlength="30" name="Stream" type="text">
+
+                                        {% for error in form.Stream.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+
+
+                    </div>
+
+                    <div class="form-group">
+                            <label for="Fullabout">
+                                FullAbout
+                            </label>
+                            <input class="form-control" id="Fullabout" name="Fullabout" type="text">
+
+                                        {% for error in form.Fullabout.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+
+                    </div>
+
+                    <div class="form-group">
+                            <label for="About">
+                                About
+                            </label>
+                            <input class="form-control" id="About" name="About" type="text">
+
+                                        {% for error in form.About.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+
+                    </div>
+                   <button class="btn btn-primary" type="submit">Submit</button>
+
+            </form>
+  </div>
+{% endblock %}

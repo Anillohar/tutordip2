@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <section class="parallex_bg intro_inner wow fadeInDown become_tutor_banner">
+    <div class="dark_overlay"></div>
+    <div class="container">
+        <div class="white_text intro_wrap text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1>Become a Tutor</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>  
+
+    <main class="main_container become_tutor_page">
+        <div class="become_tutor_section_panel">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="white_box">
+                            <form method="post" novalidate enctype="multipart/form-data">
+                                {% csrf_token %}
+                                  {{ form.non_field_errors }}
+                                  {% for hidden_field in form.hidden_fields %}
+                                     {{ hidden_field.errors }}
+                                     {{ hidden_field }}
+                                  {% endfor %}
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="Firstname">First Name</label>
+                                            <input type="text" class="form-control" id="Firstname" name="Firstname">
+                                            {% for error in form.Firstname.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="Lastname">Last Name</label>
+                                            <input type="text" class="form-control" id="Lastname" name="Lastname">
+                                            {% for error in form.Lastname.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="Email">Email Address</label>
+                                            <input type="email" class="form-control" id="Email" name="Email">
+                                        {% for error in form.Email.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="DOB">Date Of Birth</label>
+                                            <input type="text" class="form-control" id="DOB" name="DOB">
+                                        {% for error in form.DOB.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="CollegeName">College Name With City</label>
+                                            <input type="text" class="form-control" id="CollegeName" name="CollegeName">
+                                        {% for error in form.CollegeName.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="Subjects">Subject You Want To Tech</label>
+                                            <input type="text" class="form-control" id="Subjects" name="Subjects">
+                                        {% for error in form.Subjects.errors %}
+                                            <span class="list-unstyled text-danger">{{ error|escape }}</span>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group check_radio_group">
+                                            <label class="control control--checkbox">I agree to the terms & conditions, and privacy policy.
+                                                <input type="checkbox">
+                                                <div class="control__indicator"></div>
+                                            </label>                                                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                         <div class="form-group text-center action_btn">
+                                            <button type="submit" class="btnDefault">Submit</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
